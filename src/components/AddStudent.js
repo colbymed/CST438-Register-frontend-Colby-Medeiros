@@ -24,7 +24,7 @@ class AddStudent extends Component {
         console.log(this.state);
     }
 
-  // Save student and close modal form
+  // Save student
     handleAdd = () => {
         if (this.state.name === '' || this.state.email === '') {
             toast.error("Name and Email fields must have values", {
