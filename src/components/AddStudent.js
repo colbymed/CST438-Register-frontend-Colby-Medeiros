@@ -47,14 +47,14 @@ class AddStudent extends Component {
                             position: toast.POSITION.BOTTOM_LEFT
                         });
                     } else {
-                        toast.error("Student add failed", {
+                        toast.error("Student information could not be added", {
                             position: toast.POSITION.BOTTOM_LEFT
                         });
                         console.error('Put http status =' + res.status);
                     }
                 })
                 .catch(err => {
-                    toast.error("Student add failed", {
+                    toast.error("Error!", {
                         position: toast.POSITION.BOTTOM_LEFT
                     });
                     console.error(err);
