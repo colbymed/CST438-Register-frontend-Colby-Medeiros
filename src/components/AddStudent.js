@@ -14,14 +14,12 @@ class AddStudent extends Component {
     };
 
     handleChange = (event) => {
-        console.log(event.target.value);
         if (event.target.name === 'name') {
             this.setState({name: event.target.value});
         }
         else {
             this.setState({email: event.target.value});
         }
-        console.log(this.state);
     }
 
   // Save student
@@ -32,35 +30,32 @@ class AddStudent extends Component {
             });
         }
         else {
-        console.log("AddStudent.handleAdd");
-        const token = Cookies.get('XSRF-TOKEN');
-        console.log(this.state.name);
-        console.log(this.state.email);
+            const token = Cookies.get('XSRF-TOKEN');
 
-        fetch(`${SERVER_URL}/student` , 
-          {  
-            method: 'POST', 
-            headers: { 'Content-Type': 'application/json',
-                       'X-XSRF-TOKEN': token }, 
-            body: JSON.stringify({name:this.state.name,  email: this.state.email})
-          } )
-      .then(res => {
-          if (res.ok) {
-            toast.success("Student successfully added", {
-            position: toast.POSITION.BOTTOM_LEFT
-            });
-          } else {
+            fetch(`${SERVER_URL}/student` , 
+            {  
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json',
+                        'X-XSRF-TOKEN': token }, 
+                body: JSON.stringify({name:this.state.name,  email: this.state.email})
+            } )
+        .then(res => {
+            if (res.ok) {
+                toast.success("Student successfully added", {
+                position: toast.POSITION.BOTTOM_LEFT
+                });
+            } else {
+                toast.error("Student add failed", {
+                position: toast.POSITION.BOTTOM_LEFT
+                });
+                console.error('Put http status =' + res.status);
+        }})
+            .catch(err => {
             toast.error("Student add failed", {
-            position: toast.POSITION.BOTTOM_LEFT
+                position: toast.POSITION.BOTTOM_LEFT
             });
-            console.error('Put http status =' + res.status);
-      }})
-        .catch(err => {
-          toast.error("Student add failed", {
-            position: toast.POSITION.BOTTOM_LEFT
-          });
-          console.error(err);
-        })
+            console.error(err);
+            })
         };
     }
 
