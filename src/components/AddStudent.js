@@ -66,10 +66,10 @@ class AddStudent extends Component {
         return (
             <div>
                 <br />
-                <TextField style={{ width: 400 }} autoFocus label="Name" name="name" onChange={this.handleChange} />
+                <TextField style={{ width: 400 }} autoFocus id="nameField" label="Name" name="name" onChange={this.handleChange} />
                 <br />
                 <br />
-                <TextField style={{ width: 400 }} label="Email" name="email" onChange={this.handleChange} />
+                <TextField style={{ width: 400 }} id="emailField" label="Email" name="email" onChange={this.handleChange} />
                 <br />
                 <br />
                 <Button style={{ width: 200 }} color="secondary" component={Link} to={{ pathname: '/' }} >Cancel</Button>
